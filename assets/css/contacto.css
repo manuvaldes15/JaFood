@@ -1,0 +1,609 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+body {
+  font-family: "Playfair Display", "Georgia", serif;
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 60vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      135deg,
+      rgba(10, 10, 10, 0.8),
+      rgba(212, 175, 55, 0.1)
+    ),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23000" width="1200" height="600"/><g fill="%23d4af37" opacity="0.1"><circle cx="300" cy="150" r="20"/><circle cx="800" cy="300" r="25"/><circle cx="1000" cy="100" r="15"/><circle cx="200" cy="400" r="30"/><circle cx="600" cy="450" r="18"/></g></svg>');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 40px;
+  max-width: 600px;
+  backdrop-filter: blur(10px);
+  background: rgba(10, 10, 10, 0.3);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  color: #d4af37;
+  animation: fadeInUp 1.5s ease;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: rgba(245, 245, 245, 0.9);
+  font-weight: 300;
+  letter-spacing: 1px;
+  animation: fadeInUp 1.5s ease 0.3s both;
+}
+
+/* Main Section */
+.main-section {
+  padding: 100px 40px;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  position: relative;
+}
+
+.main-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23d4af37" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #d4af37;
+  letter-spacing: 2px;
+  position: relative;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: rgba(245, 245, 245, 0.7);
+  text-align: center;
+  margin-bottom: 60px;
+  font-style: italic;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.reservation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 100px;
+}
+
+/* Formulario de Reservación */
+.reservation-form {
+  background: linear-gradient(
+    145deg,
+    rgba(245, 245, 245, 0.05),
+    rgba(212, 175, 55, 0.02)
+  );
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 25px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.reservation-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.03),
+    transparent
+  );
+  transition: left 0.8s ease;
+}
+
+.reservation-form:hover::before {
+  left: 100%;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.form-icon {
+  font-size: 2.5rem;
+  color: #d4af37;
+  margin-right: 20px;
+}
+
+.form-title {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #d4af37;
+  letter-spacing: 1px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.1rem;
+  color: #f5f5f5;
+  margin-bottom: 8px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 15px 20px;
+  background: rgba(245, 245, 245, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  color: #f5f5f5;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  background: rgba(245, 245, 245, 0.08);
+}
+
+.form-control::placeholder {
+  color: rgba(245, 245, 245, 0.5);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23d4af37"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 18px 30px;
+  background: linear-gradient(45deg, #d4af37, #f4d03f);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.btn-submit:hover::before {
+  left: 100%;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* Información de Contacto */
+.contact-info {
+  background: linear-gradient(
+    145deg,
+    rgba(245, 245, 245, 0.05),
+    rgba(212, 175, 55, 0.02)
+  );
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 25px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(245, 245, 245, 0.03);
+  border-radius: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateX(10px);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.contact-icon {
+  font-size: 1.8rem;
+  color: #d4af37;
+  margin-right: 20px;
+  width: 50px;
+  text-align: center;
+}
+
+.contact-details h4 {
+  font-size: 1.2rem;
+  color: #f5f5f5;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+.contact-details p {
+  color: rgba(245, 245, 245, 0.8);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Sección de Eventos */
+.events-section {
+  margin-top: 100px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.event-card {
+  background: linear-gradient(
+    145deg,
+    rgba(245, 245, 245, 0.05),
+    rgba(212, 175, 55, 0.02)
+  );
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.05),
+    transparent
+  );
+  transition: left 0.8s ease;
+}
+
+.event-card:hover::before {
+  left: 100%;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.event-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.event-icon {
+  font-size: 2.5rem;
+  color: #d4af37;
+  margin-right: 20px;
+}
+
+.event-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #d4af37;
+  letter-spacing: 1px;
+}
+
+.event-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(245, 245, 245, 0.8);
+  margin-bottom: 25px;
+}
+
+.event-features {
+  list-style: none;
+}
+
+.event-features li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: rgba(245, 245, 245, 0.9);
+}
+
+.event-features li::before {
+  content: "✦";
+  color: #d4af37;
+  margin-right: 12px;
+  font-size: 1rem;
+}
+
+.event-price {
+  font-size: 1.4rem;
+  color: #d4af37;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Special Offers */
+.special-offers {
+  background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+  margin: 80px 0;
+  padding: 60px 50px;
+  border-radius: 25px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+}
+
+.special-offers::before {
+  content: "特別オファー";
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  background: #0a0a0a;
+  color: #d4af37;
+  padding: 5px 15px;
+  font-size: 1.2rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 20px;
+}
+
+.offer-badge {
+  background: linear-gradient(45deg, #d4af37, #f4d03f);
+  color: #0a0a0a;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.offer-title {
+  font-size: 1.8rem;
+  color: #d4af37;
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.offer-description {
+  color: rgba(245, 245, 245, 0.9);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.offer-terms {
+  font-size: 0.9rem;
+  color: rgba(245, 245, 245, 0.6);
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .reservation-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .reservation-form,
+  .contact-info {
+    padding: 30px 25px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .event-card {
+    padding: 30px 25px;
+  }
+
+  .special-offers {
+    padding: 40px 25px;
+    margin: 60px 0;
+  }
+
+  .hero-section {
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-section {
+    padding: 60px 20px;
+  }
+
+  .hero-content {
+    padding: 30px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .reservation-form,
+  .contact-info,
+  .event-card {
+    padding: 25px 20px;
+  }
+
+  .special-offers {
+    padding: 30px 20px;
+  }
+}
+
+/* Scrollbar para navegadores basados en Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #d4af37, #b8941f);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ffdb70, #d4af37);
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4af37 #0a0a0a;
+}

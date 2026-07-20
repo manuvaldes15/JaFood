@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "functions": {
+    "**/*.php": {
+      "runtime": "vercel-community/php"
+    }
+  },
+  "rewrites": [
+    { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/menu", "destination": "/pages/menu.php" },
+    { "source": "/nosotros", "destination": "/pages/nosotros.php" },
+    { "source": "/galeria", "destination": "/pages/galeria.php" },
+    { "source": "/blog", "destination": "/pages/blog.php" },
+    { "source": "/contacto", "destination": "/pages/contacto.php" },
+    { "source": "/testimonios", "destination": "/pages/testimonios.php" }
+  ]
+}
