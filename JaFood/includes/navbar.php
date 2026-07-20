@@ -1,30 +1,39 @@
 <?php
-$currentFile = basename($_SERVER['PHP_SELF']);
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+$currentFile = basename($requestPath);
 $currentPage = '';
 
-$isInPages = strpos($_SERVER['PHP_SELF'], '/pages/') !== false;
+$isInPages = strpos($requestPath, '/pages/') !== false;
 $basePath = $isInPages ? '../' : '';
 
 switch($currentFile) {
     case 'index.php':
+    case '':
+    case '/':
         $currentPage = 'inicio';
         break;
     case 'menu.php':
+    case 'menu':
         $currentPage = 'menu';
         break;
     case 'nosotros.php':
+    case 'nosotros':
         $currentPage = 'nosotros';
         break;
     case 'galeria.php':
+    case 'galeria':
         $currentPage = 'galeria';
         break;
     case 'blog.php':
+    case 'blog':
         $currentPage = 'blog';
         break;
     case 'contacto.php':
+    case 'contacto':
         $currentPage = 'contacto';
         break;
     case 'testimonios.php':
+    case 'testimonios':
         $currentPage = 'testimonios';
         break;
     default:
