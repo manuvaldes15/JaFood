@@ -1,0 +1,290 @@
+/* Navbar elegante */
+html,
+body {
+  overflow-x: hidden; /* oculta scroll horizontal */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled {
+  padding: 15px 0;
+  background: rgba(10, 10, 10, 0.98);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #d4af37;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  letter-spacing: 5px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a {
+  color: #f5f5f5;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  position: relative;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap; /* Evita que el texto se divida en líneas */
+}
+
+.nav-links li a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.nav-links li a:hover::before {
+  width: 100%;
+}
+
+.nav-links li a:hover {
+  color: #d4af37;
+  transform: translateY(-2px);
+}
+
+.nav-links li a.active {
+  color: #d4af37;
+  font-weight: 400;
+  position: relative;
+}
+
+.nav-links li a.active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  color: #f5f5f5;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Dispositivos medianos */
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 0 30px;
+  }
+
+  .nav-links {
+    gap: 30px;
+  }
+
+  .logo {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .nav-links li a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links li a {
+    font-size: 0.95rem;
+    padding: 8px 0;
+  }
+}
+
+/* Tablets y móviles */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.open {
+    max-height: 700px;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links li a {
+    display: block;
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 12px 20px;
+  }
+
+  .nav-links li a:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: none;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 15px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+
+  .nav-toggle {
+    font-size: 1.6rem;
+  }
+
+  .nav-links {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .nav-links.open {
+    max-height: 80vh;
+  }
+
+  .nav-links li {
+    padding: 12px 0;
+  }
+
+  .nav-links li a {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+}
+
+/* Pantallas cortas (modo landscape en móvil) */
+@media (max-height: 700px) and (max-width: 768px) {
+  .nav-links {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  .nav-links.open {
+    max-height: 70vh;
+  }
+
+  .nav-links li {
+    padding: 8px 0;
+  }
+
+  .nav-links li a {
+    padding: 8px 15px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Scrollbar para navegadores basados en Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #d4af37, #b8941f);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ffdb70, #d4af37);
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4af37 #0a0a0a;
+}
